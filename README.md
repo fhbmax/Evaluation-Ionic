@@ -36,9 +36,11 @@ wird sie im Unterverzeichnis *www* erstellt und mit einem lokalen Webserver unte
 Um die Android-App (apk) zu kompilieren, muss das [Android-SDK](https://developer.android.com/studio/index.html#downloads) installiert sein. 
 
 Kompilieren: 
+
     ionic build android 
 
 Ausführen auf einem per ADB angeschlossenen Gerät:
+
     ionic run android --device 
 
 ### iOS-App 
