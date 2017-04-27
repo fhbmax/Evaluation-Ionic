@@ -1,0 +1,27 @@
+<ion-header no-border>
+  <ion-navbar transparent>     
+    <ion-title>
+      <img class="logo-img" src="assets/img/thblogo_white.svg">&nbsp;Evaluation
+    </ion-title> 
+  </ion-navbar>
+</ion-header>
+
+<div>  
+  <div class="preview">
+    <div class="scanner" *ngIf="!platform.is('cordova')">
+      <qr-scanner (onRead)="onReadQR($event)" [facing]="environment"></qr-scanner>
+    <div>
+
+    <ion-fab bottom right>
+      <button ion-fab color="dark" (click)="testSkip()">Skip</button>
+    </ion-fab>
+
+    <ion-fab bottom left>
+      <button ion-fab color="dark" (click)="scan()">Scan</button>
+    </ion-fab>
+<!--
+    <ion-fab bottom left>
+      <button ion-fab color="dark" (click)="enterToken()">Token</button>
+    </ion-fab> -->
+  </div> 
+</div>

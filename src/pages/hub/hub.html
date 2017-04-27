@@ -1,0 +1,66 @@
+<ion-header>
+  <ion-navbar class="navbar-styled">    
+    <ion-buttons left>
+      <button ion-button icon-only>
+        <img class="logo-img" src="assets/img/thblogo_white.svg">
+      </button>
+    </ion-buttons>
+
+    <ion-title>       
+        Evaluation 
+    </ion-title><!-- {{platform.platforms()}} {{currentIndex}} --> 
+
+    <ion-buttons end>
+      <ion-toggle showWhen="core" [(ngModel)]="animate" title="[TESTING] toggle slide animation">        
+      </ion-toggle>     
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content has-header no-scroll>
+  <div class="splitViewContainer">
+
+    <ion-split-pane (ionChange)="splitPaneChanged($event)">
+      <ion-menu [content]="mycontent">
+        <page-list [links]="links" (linkSelected)="onLinkSelected($event)" [selectedIndex]="currentIndex"></page-list>
+      </ion-menu>
+
+      <div #mycontent main>
+       
+        <ion-segment mode="md" *ngIf="!splitPane.isVisible()">
+          <ion-segment-button value="linkLeft" (click)="slides.slidePrev()" [disabled]="currentIndex == 0" text-left>
+            {{segmLeft}}
+          </ion-segment-button>
+          <ion-segment-button value="linkMid">
+            {{segmMid}}
+          </ion-segment-button>
+          <ion-segment-button value="linkRight" (click)="slides.slideNext()" [disabled]="currentIndex > totalNumberOfQuestion" text-right>
+            {{segmRight}}
+          </ion-segment-button>
+        </ion-segment>
+        
+        <ion-slides spaceBetween="30" (ionSlideWillChange)="onSlideChanged()">
+          <!-- Studiengangwahl -->
+          <ion-slide>         
+            <page-course [courses]="courses" (courseSelected)="onCourseSelected($event)"></page-course>
+          </ion-slide>
+          <!-- Auswahlfragen -->
+          <ion-slide *ngFor="let chq of choiceQuestions">            
+            <page-choice-question [choiceQuestion]="chq" (choiceSelected)="onChoiceSelected($event)"></page-choice-question>
+          </ion-slide>
+          <!-- Textfragen -->
+          <ion-slide *ngFor="let txq of textQuestions">
+            <page-text-question [textQuestion]="txq" (answer)="onTextAnswerChanged($event)" (imageString)="onImageAnswerChanged($event)" ></page-text-question>
+          </ion-slide>
+          <!-- Senden -->
+          <ion-slide>
+            <page-send (sendPressed)="onSendPressed()"></page-send>
+          </ion-slide>
+        </ion-slides>      
+      </div>
+    </ion-split-pane>
+  </div>
+</ion-content>

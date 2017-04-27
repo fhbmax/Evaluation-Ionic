@@ -1,0 +1,21 @@
+page-send {
+     .container {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .container > div {        
+        flex-grow: 1;
+        margin: 5px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        input, button {
+            margin: 0;    
+        }  
+    }
+}

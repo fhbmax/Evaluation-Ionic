@@ -1,0 +1,10 @@
+<ion-content>  
+  <ion-list>
+    <button ion-item detail-push *ngFor="let link of links" 
+    (click)="onSelect(link.index)" id="list-link-{{link.index}}"
+    [ngClass]="{selected: link.index == selectedIndex, done: link.checked}">
+        {{link.text}} 
+        <ion-icon name="checkmark-circle" *ngIf="link.checked" item-right></ion-icon>
+    </button>
+  </ion-list>
+</ion-content>

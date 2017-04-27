@@ -1,0 +1,26 @@
+<div class="rootDiv">
+  <h2>{{choiceQuestion?.question}}</h2>
+  
+  <ion-footer no-shadow no-border>
+    <div class="buttonscontainer">
+      <div class="col-grades">          
+        <button ion-button block mode="ios" 
+                *ngFor="let choice of choiceQuestion.choices | slice:1; let index = i"
+                (click)="onSelect(choice)" 
+                [style.background-color]="gradeColors[Math.abs(choice.grade)]" 
+                [outline]="selectedAnswer === choice" >
+              {{choice.choiceText}}
+        </button>
+      </div>
+      <div class="col-nc">
+        <button ion-button end mode="ios" 
+                *ngIf="choiceQuestion.choices[0].grade == 0" 
+                style.background="{{gradeColors[0]}}" 
+                (click)="onSelect(choiceQuestion?.choices[0])" 
+                [outline]="selectedAnswer === choiceQuestion?.choices[0]">
+                {{choiceQuestion?.choices[0].choiceText}}
+        </button> 
+      </div>
+    </div>
+  </ion-footer>
+</div>

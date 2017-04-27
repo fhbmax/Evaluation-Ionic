@@ -1,0 +1,28 @@
+<div class="div-root">  
+  <div class="container">  
+    <h2>{{textQuestion?.questionText}}</h2>  
+    <div>      
+      <ion-item [ngSwitch]="textQuestion?.onlyNumbers">
+        <ion-input *ngSwitchCase="true" type="number" 
+          placeholder="Geben Sie hier ein Zahl ein.."
+          (input)="onInputChanged($event.target.value)"></ion-input>
+        <ion-textarea *ngSwitchCase="false" type="text" 
+          placeholder="Geben Sie hier Ihre Antwort ein..."           
+          (input)="onInputChanged($event.target.value)"></ion-textarea>
+      </ion-item>
+    </div>
+    <div *ngIf="!textQuestion?.onlyNumbers">
+      <img src="{{photoScr}}" />  
+      
+      <ion-fab right bottom>
+          <button ion-fab color="primary" (click)="takePicture()">
+              <ion-icon name="md-camera"></ion-icon>
+          </button>
+      </ion-fab>
+      <ion-fab left bottom *ngIf="photoScr">
+          <button ion-fab color="primary" (click)="deletePicture()">
+              <ion-icon name="md-trash"></ion-icon>
+          </button>
+      </ion-fab>
+    </div>
+</div>

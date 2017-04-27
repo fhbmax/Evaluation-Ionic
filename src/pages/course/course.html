@@ -1,0 +1,10 @@
+
+<div class="rootDiv">
+  <h2>Wählen Sie Ihren Studiengang.</h2>
+  <ion-list radio-group class="list-courses" (ionChange)="itemSelected($event)">    
+    <ion-item *ngFor="let c of courses">
+      <ion-label>{{c}}</ion-label>
+      <ion-radio value="{{c}}"></ion-radio>
+    </ion-item>
+  </ion-list>
+</div>

@@ -1,0 +1,13 @@
+{
+  "name": "Evaluation der Lehre",
+  "short_name": "THB Eval",
+  "start_url": "index.html",
+  "display": "standalone",
+  "icons": [{
+    "src": "assets/img/thblogo_white.png",
+    "sizes": "512x512",
+    "type": "image/png"
+  }],
+  "background_color": "#CC0A2F",
+  "theme_color": "#CC0A2F"
+}
